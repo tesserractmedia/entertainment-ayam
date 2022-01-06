@@ -8,4 +8,5 @@
 |-|-|-|-|
 | /api/v1/report | POST | | |
 | /api/v1/report/:id | GET | | |
+| /api/v1/search/ | GET | page,name,sort,year,season,episode, | |
 
