@@ -6,7 +6,7 @@
 
 | API Endpoints | Type | Params | Body
 |-|-|-|-|
-| /api/v1/report | POST | | ``` {
+| /api/v1/report | POST | | ```json {
    "id":null,
    "email":"",
    "name":"",
