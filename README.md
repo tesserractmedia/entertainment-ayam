@@ -8,5 +8,8 @@
 |-|-|-|-|
 | /api/v1/report | POST | | |
 | /api/v1/report/:id | GET | | |
-| /api/v1/search/ | GET | page,name,sort,year,season,episode, | |
+| /api/v1/report/search/ | GET |  | |
+| /api/v1/content/:id | GET | ||
+| /api/v1/content/search | page,name,sort,year,season,episode, |||
+| /api/v1/banned_word | | | |
 
