@@ -20,7 +20,7 @@
       "hour":0
    },
    "description":""
-} ```|
+} ``` |
 | /api/v1/report/:id | GET | | |
 | /api/v1/report/search/ | GET | page,desc,day,year,month,category,range | |
 | /api/v1/content/:id | GET | ||
