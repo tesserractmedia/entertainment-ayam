@@ -4,4 +4,6 @@
 
 ### API
 
-API Endpoints | 
+| API Endpoints | Params | Body
+|-|-|-|
+| /api/v1/report | | |
