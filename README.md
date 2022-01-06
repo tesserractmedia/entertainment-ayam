@@ -10,6 +10,8 @@
 | /api/v1/report/:id | GET | | |
 | /api/v1/report/search/ | GET |  | |
 | /api/v1/content/:id | GET | ||
-| /api/v1/content/search | page,name,sort,year,season,episode, |||
-| /api/v1/banned_word | | | |
+| /api/v1/content/search | GET | page,name,sort,year,season,episode, ||
+| /api/v1|category/:id | GET |||
+| /api/v1/category/all | GET | |
+| /api/v1/banned_word | GET | | |
 
