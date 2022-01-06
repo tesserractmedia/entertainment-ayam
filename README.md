@@ -5,8 +5,6 @@
 ### API
 
 | API Endpoints | type | Params | Body
-|-|-|-| - |
 | /api/v1/report | POST | | |
-|-|-|-| - |
-|/api/v1/report/:id | GET | | |
+| /api/v1/report/:id | GET | | |
 
