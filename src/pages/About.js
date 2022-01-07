@@ -1,5 +1,4 @@
 import React from 'react'
-import logo from '../logo.png';
 import {Accordion} from 'react-bootstrap'
 function About() {
     return (

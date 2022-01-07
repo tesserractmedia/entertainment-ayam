@@ -2,7 +2,6 @@ import React from 'react'
 import { Form, Button, Card, Col, Row, Spinner, Dropdown, Modal } from 'react-bootstrap'
 import { BsPatchCheck } from 'react-icons/bs'
 import axios from "axios";
-import { title } from 'faker/lib/locales/az';
 
 function Report() {
 
@@ -67,7 +66,6 @@ function Report() {
             },
             "description": description
         }
-        console.log(typeof season)
         axios.post('http://127.0.0.1:8000/api/v1/report', data).then(respose => {
             if (respose.data["status"] === "success") {
                 setLoading(false);
@@ -121,6 +119,8 @@ function Report() {
                 setSeason(e.target.getAttribute('data-season'));
                 setEpisode(e.target.getAttribute('data-episode'));
                 break;
+            default:
+
         }
     }
 
@@ -251,7 +251,7 @@ function Report() {
                                                         </Form.Group>
                                                     </Row>
                                                 )
-                                                break
+                                            default:
 
                                         }
                                     })()

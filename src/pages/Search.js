@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Form, Col, Row, Button, Card, InputGroup } from 'react-bootstrap'
 import { BsArrowClockwise, BsSearch } from 'react-icons/bs';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 function Search() {
     const [title, setTitle] = React.useState("");
@@ -12,6 +13,9 @@ function Search() {
     const [sort, setSort] = React.useState('title');
 
     const [result, setResult] = React.useState(null);
+    const [info, setInfo] = React.useState(null);
+
+    let navigate = useNavigate();
 
     const setDefault = () => {
         setTitle("");
@@ -34,23 +38,32 @@ function Search() {
         return output;
     };
 
-    const search = () => {
-        const params = {"sort" : sort};
-        if(title !== ""){params["title"] = title};
-        if(category !== "all"){params["category"] = category};
-        if(year !== 0 && year !== "0"){params["year"] = year};
-        if(season !== 0){params["season"] = season};
-        if(episode !== 0){params["episode"] = episode};
+    const search = (e,page) => {
+        const params = { "sort": sort };
+        console.log(page)
+        if (page !== null) { params["page"] = page }
+        if (title !== "") { params["title"] = title };
+        if (category !== "all") { params["category"] = category };
+        if (year !== 0 && year !== "0") { params["year"] = year };
+        if (season !== 0) { params["season"] = season };
+        if (episode !== 0) { params["episode"] = episode };
 
         axios.get('http://127.0.0.1:8000/api/v1/search', {
             params: params
         }).then((response) => {
             if (response.data["status"] === "success") {
                 setResult(response.data["data"]);
+                setInfo(response.data["info"]);
             }
         });
     }
 
+
+    const onClickContent = (e) => {
+        let id = e.target.getAttribute("data-id");
+        console.log(id)
+        navigate(`/content/${id}`);
+    }
 
     return (
         <Container className='py-3'>
@@ -141,6 +154,16 @@ function Search() {
             </Row>
             <Row className='justify-content-center'>
                 <Col lg={8}>
+                    <Row>
+                        {
+                            info !== null ?
+                                <Col className='d-flex justify-content-between'>
+                                    <Button>Prev</Button>
+                                    <h6>Total Search Result: {info["total_rows"]}</h6>
+                                    <Button>Next</Button>
+                                </Col> : <React.Fragment></React.Fragment>
+                        }
+                    </Row>
                     <hr />
                     {
                         result !== null ?
@@ -153,12 +176,13 @@ function Search() {
                                                 <Card.Text>
                                                     {item["year"]}
                                                     <p> {item["report"]}</p>
+                                                    <Button data-id={item["id"]} onClick={onClickContent}>Check</Button>
                                                 </Card.Text>
                                             </Card.Body>
                                         </Card>
                                     </Col>
                                 ))}
-                            </Row> : "Nothing Found!"
+                            </Row> : <Row className='text-center'>"Nothing Found!"</Row>
                     }
                 </Col>
             </Row >

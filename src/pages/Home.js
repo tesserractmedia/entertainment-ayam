@@ -9,10 +9,11 @@ import {
   Title,
   Tooltip,
   Legend,
+
 } from 'chart.js';
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import { Line, Doughnut } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 
 ChartJS.register(
   CategoryScale,
@@ -25,80 +26,47 @@ ChartJS.register(
   ArcElement
 );
 
-//ChartJS.defaults.scale.grid.drawOnChartArea = false;
-export const options = {
+const option = {
+  responsive: true,
   plugins: {
     title: {
-        display: true,
-        text: 'Hinduphobia Incidents Reported'
-    }
-},
-  responsive: true,
-  scales : {
+      display: true,
+      text: 'Chart.js Line Chart'
+    },
+  },
+  scales: {
     x: {
       grid: {
-        drawOnChartArea: false
+        drawBorder: false,
       }
     },
     y: {
-      grid: {
-        drawOnChartArea: false
+      grid: { drawBorder: false, }
+    }
+  }
+}
+
+const data_l = (canvas) => {
+
+  const ctx = canvas.getContext("2d")
+  var gradient = ctx.creaLinearGradient(0, 0, 500, 500);
+  gradient.addColorStop(0, 'rgba(255,0,0,1)');
+  gradient.addColorStop(1, 'rgba(255,0,0,0.5)')
+
+  console.log(gradient)
+  const labels = ["jan", "feb", "march"]
+  return {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Unfilled',
+        data: [1, 2, 3],
+        borderColor: "rgba(255,0,0,1)",
+        backgroundColor: "rgba(10,,100,100,1)",
       }
-    },
-  },
-  plugins: {
-    legend: {
-      position: 'top',
-    },
-    title: {
-      display: true,
-      text: 'Chart.js Line Chart',
-    },
-  },
-};
-
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-export const data_l = {
-  labels,
-  datasets: [
-    {
-      label: 'Incidents',
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132,1)',
-      tension: 0.5
-    },
-  ],
-};
-
-
-export const data_d = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-  datasets: [
-    {
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)',
-      ],
-      borderWidth: 1,
-    },
-  ],
-};
+    ]
+  }
+}
 
 function Home() {
 
@@ -106,15 +74,15 @@ function Home() {
     <div>
       <Container>
         <Row>
-        <h2 className='text-center my-5'></h2>
+          <h2 className='text-center my-5'>Title</h2>
         </Row>
         <Row>
           <Col lg={8}>
-            <h3></h3>
-            <Line options={options} data={data_l} />
+            <h3>Some Content</h3>
+
           </Col>
           <Col lg={4}>
-            {/*<Doughnut data={data_d} />*/}
+
           </Col>
         </Row>
       </Container>

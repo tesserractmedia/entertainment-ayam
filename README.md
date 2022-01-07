@@ -1,12 +1,30 @@
- # Project Ayam > Entertainment Ayam 
+# Project Ayam > Entertainment Ayam
 
-## See Live at: https://tesserractmedia.github.io/entertainment-ayam/
+## See Live at: <https://tesserractmedia.github.io/entertainment-ayam/>
 
-### API
+## API Not Deployed Yet
+----
 
-| API Endpoints | Type | Params | Body
-|-|-|-|-|
-| /api/v1/report | POST | | ```json {
+## API Version 1
+
+| API Endpoints | Type |
+|-|-|
+| <https://entertainment-ayam.herokuapp.com/api/v1/report> | POST |
+| <https://entertainment-ayam.herokuapp.com/api/v1/report> | GET |
+| <https://entertainment-ayam.herokuapp.com/api/v1/report/:id> | GET |
+| <https://entertainment-ayam.herokuapp.com/api/v1/content> | GET |
+| <https://entertainment-ayam.herokuapp.com/api/v1/content/:id> | GET |
+| <https://entertainment-ayam.herokuapp.com/api/v1/category/> | GET |
+| <https://entertainment-ayam.herokuapp.com/api/v1/category/:id> | GET |
+| <https://entertainment-ayam.herokuapp.com/api/v1/banned_word> | GET |
+
+---
+
+### <https://entertainment-ayam.herokuapp.com/api/v1/report>
+
+Body
+
+```json {
    "id":null,
    "email":"",
    "name":"",
@@ -20,12 +38,8 @@
       "hour":0
    },
    "description":""
-} ``` |
-| /api/v1/report/:id | GET | | |
-| /api/v1/report/search/ | GET | page,desc,day,year,month,category,range | |
-| /api/v1/content/:id | GET | ||
-| /api/v1/content/search | GET | page,name,sort,year,season,episode,category, ||
-| /api/v1/category/:id | GET |||
-| /api/v1/category/all | GET | | |
-| /api/v1/banned_word | GET | | |
+} 
+```
+
+Response
 
