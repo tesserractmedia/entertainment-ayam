@@ -66,7 +66,7 @@ function Report() {
             },
             "description": description
         }
-        axios.post('https://entertainment-ayam.herokuapp.com//api/v1/report', data).then(respose => {
+        axios.post('https://entertainment-ayam.herokuapp.com/api/v1/report', data).then(respose => {
             if (respose.data["status"] === "success") {
                 setLoading(false);
                 setSubmit(true);
