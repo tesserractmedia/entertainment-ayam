@@ -2,8 +2,13 @@
 
 ## See Live at: <https://tesserractmedia.github.io/entertainment-ayam/>
 
+### Features
+- Report Graph ( Day wise | Month wise | Year wise )
+- Most Hinduphobic Content ( Category wise | Year Wise )
+- Reported Category Share
+
 ## API Not Deployed Yet
-----
+---
 
 ## API Version 1
 
