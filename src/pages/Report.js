@@ -66,7 +66,7 @@ function Report() {
             },
             "description": description
         }
-        axios.post('http://127.0.0.1:8000/api/v1/report', data).then(respose => {
+        axios.post('https://entertainment-ayam.herokuapp.com//api/v1/report', data).then(respose => {
             if (respose.data["status"] === "success") {
                 setLoading(false);
                 setSubmit(true);
@@ -91,7 +91,7 @@ function Report() {
         cancelToken = axios.CancelToken.source();
 
         const result = await axios.get(
-            'http://127.0.0.1:8000/api/v1/content',
+            'https://entertainment-ayam.herokuapp.com/api/v1/content',
             {
                 params: { name: name },
                 cancelToken: cancelToken.token

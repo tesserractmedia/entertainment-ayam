@@ -48,7 +48,7 @@ function Search() {
         if (season !== 0) { params["season"] = season };
         if (episode !== 0) { params["episode"] = episode };
 
-        axios.get('http://127.0.0.1:8000/api/v1/content', {
+        axios.get('https://entertainment-ayam.herokuapp.com/api/v1/content', {
             params: params
         }).then((response) => {
             if (response.data["status"] === "success") {

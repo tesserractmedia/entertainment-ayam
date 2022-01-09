@@ -18,7 +18,7 @@ function Content() {
             setContent(false);
 
         } else {
-            axios.get(`http://127.0.0.1:8000/api/v1/content/${id}`).then((response) => {
+            axios.get(`https://entertainment-ayam.herokuapp.com/api/v1/content/${id}`).then((response) => {
                 if (response.data["status"] === "success") {
                     setLoading(false);
                     setContent(true);
