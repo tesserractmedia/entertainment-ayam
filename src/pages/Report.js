@@ -13,7 +13,7 @@ function Report() {
     const [id, setId] = React.useState(null);
     const [email, setEmail] = React.useState('');
     const [contentName, setContentName] = React.useState('');
-    const [contentType, setContentType] = React.useState('Movie');
+    const [contentType, setContentType] = React.useState('movie');
     const [season, setSeason] = React.useState(null);
     const [episode, setEpisode] = React.useState(null);
     const [contentYear, setContentYear] = React.useState(new Date().getFullYear());
@@ -33,7 +33,7 @@ function Report() {
         setId(null);
         setEmail('');
         setContentName('');
-        setContentType('Movie');
+        setContentType('movie');
         setContentYear(new Date().getFullYear());
         setSeason(null);
         setEpisode(null);
@@ -67,7 +67,7 @@ function Report() {
             "description": description
         }
         axios.post('https://entertainment-ayam.herokuapp.com/api/v1/report', data).then(respose => {
-            if (respose.data["status"] === "success") {
+            if (respose.data["success"] === true) {
                 setLoading(false);
                 setSubmit(true);
             } else {
@@ -97,7 +97,7 @@ function Report() {
                 cancelToken: cancelToken.token
             });
 
-        if (result.data["status"] === "success" && result.data['data'] !== null) {
+        if (result.data["success"] === true && result.data['data'] !== null) {
             setContentNameList(result.data['data']);
         } else {
             setContentNameList([]);

@@ -19,7 +19,7 @@ function Content() {
 
         } else {
             axios.get(`https://entertainment-ayam.herokuapp.com/api/v1/content/${id}`).then((response) => {
-                if (response.data["status"] === "success") {
+                if (response.data["success"] === true) {
                     setLoading(false);
                     setContent(true);
                     setData(response.data["data"]);

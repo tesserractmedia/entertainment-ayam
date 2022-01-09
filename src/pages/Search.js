@@ -51,7 +51,7 @@ function Search() {
         axios.get('https://entertainment-ayam.herokuapp.com/api/v1/content', {
             params: params
         }).then((response) => {
-            if (response.data["status"] === "success") {
+            if (response.data["success"] === true) {
                 setResult(response.data["data"]);
                 setInfo(response.data["info"]);
             }
