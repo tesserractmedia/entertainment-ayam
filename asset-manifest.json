@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/entertainment-ayam/static/css/main.63481654.css",
-    "main.js": "/entertainment-ayam/static/js/main.b458c02c.js",
+    "main.js": "/entertainment-ayam/static/js/main.cf03a4d8.js",
     "static/js/787.0bae3483.chunk.js": "/entertainment-ayam/static/js/787.0bae3483.chunk.js",
     "index.html": "/entertainment-ayam/index.html",
     "main.63481654.css.map": "/entertainment-ayam/static/css/main.63481654.css.map",
-    "main.b458c02c.js.map": "/entertainment-ayam/static/js/main.b458c02c.js.map",
+    "main.cf03a4d8.js.map": "/entertainment-ayam/static/js/main.cf03a4d8.js.map",
     "787.0bae3483.chunk.js.map": "/entertainment-ayam/static/js/787.0bae3483.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.63481654.css",
-    "static/js/main.b458c02c.js"
+    "static/js/main.cf03a4d8.js"
   ]
 }
