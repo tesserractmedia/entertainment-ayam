@@ -46,47 +46,22 @@ const option = {
   }
 }
 
-const data_l = (canvas) => {
 
-  const ctx = canvas.getContext("2d")
-  var gradient = ctx.creaLinearGradient(0, 0, 500, 500);
-  gradient.addColorStop(0, 'rgba(255,0,0,1)');
-  gradient.addColorStop(1, 'rgba(255,0,0,0.5)')
-
-  console.log(gradient)
-  const labels = ["jan", "feb", "march"]
-  return {
-    labels: labels,
-    datasets: [
-      {
-        label: 'Unfilled',
-        data: [1, 2, 3],
-        borderColor: "rgba(255,0,0,1)",
-        backgroundColor: "rgba(10,,100,100,1)",
-      }
-    ]
-  }
-}
 
 function Home() {
 
   return (
-    <div>
-      <Container>
-        <Row>
-          <h2 className='text-center my-5'>Title</h2>
-        </Row>
-        <Row>
-          <Col lg={8}>
-            <h3>Some Content</h3>
+    <Container>
+      <h2 className='text-center my-5'>Title</h2>
+      <Row>
+        <Col lg={8}>
+          This is the Website of Entertainment Ayam a sub-project and part of the Ayam Project ecosystem. This project's aim is to collect data on Hinduphobia being spread through entertainment mediums. No personal details are collected on this website. Here you report Hinduphobia and can also see the data in form of charts and graphs.
+        </Col>
+        <Col lg={4}>
 
-          </Col>
-          <Col lg={4}>
-
-          </Col>
-        </Row>
-      </Container>
-    </div>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

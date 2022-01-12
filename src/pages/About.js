@@ -1,5 +1,6 @@
 import React from 'react'
 import {Accordion} from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 function About() {
     return (
         <div className='p-5'>
@@ -29,6 +30,7 @@ function About() {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
+            <Link to='https://www.freepik.com/vectors/infographic'>Infographic vector created by freepik - www.freepik.com</Link>
         </div>
     )
 }

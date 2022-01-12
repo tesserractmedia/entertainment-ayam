@@ -1,0 +1,15 @@
+@font-face {
+    font-family: "HK Modular";
+    font-style: normal;
+    font-weight: normal;
+    src: local('roboto'), url('./fonts/hk-modular.ttf') format('truetype');
+}
+
+
+.bg-img {
+    z-index: -1;
+    background-image: url('./images/akhand-bharat.svg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+}

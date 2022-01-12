@@ -76,10 +76,13 @@ function Report() {
                 setShowDialog(true);
                 setMessage(respose.data["message"]);
             }
+        }).catch((error) => {
+            setShowDialog(true);
+            setMessage(error.response.data["message"]);
         });
     }
 
-    const onNameChange = async (e) => {
+    const onNameChange = (e) => {
         const name = e.target.value;
 
 
@@ -90,18 +93,18 @@ function Report() {
 
         cancelToken = axios.CancelToken.source();
 
-        const result = await axios.get(
+        axios.get(
             'https://entertainment-ayam.herokuapp.com/api/v1/content',
             {
                 params: { name: name },
                 cancelToken: cancelToken.token
+            }).then((response) => {
+                if (response.data["success"] === true && response.data['data'] !== null) {
+                    setContentNameList(result.data['data']);
+                } else {
+                    setContentNameList([]);
+                }
             });
-
-        if (result.data["success"] === true && result.data['data'] !== null) {
-            setContentNameList(result.data['data']);
-        } else {
-            setContentNameList([]);
-        }
         setId(null);
         setContentName(name);
     }
@@ -331,17 +334,6 @@ function Report() {
                                             Submit
                                         </Button>
                                     </Form>
-                                    <Modal show={showDialog} onHide={handleClose} centered size="sm" >
-                                        <Modal.Header closeButton>
-                                            <Modal.Title>Message</Modal.Title>
-                                        </Modal.Header>
-                                        <Modal.Body>{message}</Modal.Body>
-                                        <Modal.Footer>
-                                            <Button variant="primary" onClick={handleClose}>
-                                                Ok
-                                            </Button>
-                                        </Modal.Footer>
-                                    </Modal>
                                 </React.Fragment>
                                 )
                             }
@@ -349,6 +341,17 @@ function Report() {
                     </Card>
                 </Col>
             </Row>
+            <Modal show={showDialog} onHide={handleClose} centered size="sm" >
+                <Modal.Header closeButton>
+                    <Modal.Title>Message</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>{message}</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleClose}>
+                        Ok
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </Container>
     )
 }

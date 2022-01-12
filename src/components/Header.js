@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 export default class Header extends Component {
     render() {
         return (
-            <Navbar bg="light" expand="lg" sticky="top" className='shadow-sm'>
+            <Navbar bg="dark" variant="dark" expand="lg" sticky="top" className='shadow-sm'>
                 <Container>
-                    <Navbar.Brand href="#home"></Navbar.Brand>
+                    <Navbar.Brand style={{fontFamily : "HK Modular, Roboto",textTransform : "uppercase" ,textShadow : "-2px 0px #fa66ff" ,letterSpacing  : "0.3rem"}}>Entertainment Ayam</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">

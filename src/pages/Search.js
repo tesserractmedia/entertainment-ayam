@@ -1,16 +1,22 @@
 import React from 'react'
-import { Container, Form, Col, Row, Button, Card, InputGroup } from 'react-bootstrap'
+import { Container, Form, Col, Row, Button, Card, InputGroup, Spinner,Modal } from 'react-bootstrap'
 import { BsArrowClockwise, BsSearch } from 'react-icons/bs';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 
 function Search() {
+
+    const [loading, setLoading] = React.useState(false);
     const [title, setTitle] = React.useState("");
     const [year, setYear] = React.useState(0);
     const [category, setCategory] = React.useState("all");
     const [season, setSeason] = React.useState(0);
     const [episode, setEpisode] = React.useState(0);
     const [sort, setSort] = React.useState('title');
+
+
+    const [showDialog,setShowDialog] = React.useState(false);
+    const [message, setMessage] = React.useState("");
 
     const [result, setResult] = React.useState(null);
     const [info, setInfo] = React.useState(null);
@@ -26,6 +32,10 @@ function Search() {
         setSort("title");
     }
 
+    const handleClose = () => {
+        setShowDialog(false);
+    }
+
     const range = (start, end, step = 1) => {
         let output = [];
         if (typeof end === 'undefined') {
@@ -38,9 +48,10 @@ function Search() {
         return output;
     };
 
-    const search = (e,page) => {
-        const params = { "sort": sort };
-        console.log(page)
+    const search = (e) => {
+        const params = {};
+        const page = e.target.getAttribute("data-page");
+        if (sort !== null) { params["sort"] = sort };
         if (page !== null) { params["page"] = page }
         if (title !== "") { params["title"] = title };
         if (category !== "all") { params["category"] = category };
@@ -48,13 +59,22 @@ function Search() {
         if (season !== 0) { params["season"] = season };
         if (episode !== 0) { params["episode"] = episode };
 
+        setLoading(true);
+
         axios.get('https://entertainment-ayam.herokuapp.com/api/v1/content', {
             params: params
         }).then((response) => {
             if (response.data["success"] === true) {
                 setResult(response.data["data"]);
                 setInfo(response.data["info"]);
+                setLoading(false);
+            } else {
+                setLoading(false);
             }
+        }).catch((error) => {
+            setLoading(false);
+            setShowDialog(true);
+            setMessage(error.response.data["message"]);
         });
     }
 
@@ -146,6 +166,7 @@ function Search() {
                                     <option value="season">Season</option>
                                     <option value="episode">Episode</option>
                                     <option value="report">Report</option>
+                                    <option value={null}>None</option>
                                 </Form.Select>
                             </Form.Group>
                         </Row>
@@ -158,34 +179,44 @@ function Search() {
                         {
                             info !== null ?
                                 <Col className='d-flex justify-content-between'>
-                                    <Button>Prev</Button>
-                                    <h6>Total Search Result: {info["total_rows"]}</h6>
-                                    <Button>Next</Button>
+                                    <Button  size="sm" data-page={info["previous_page"]} onClick={search}>Prev</Button>
+                                    <h6> Total Search Result: {info["total_rows"]}</h6>
+                                    <h6>Page {info["current_page"]} of {info["total_pages"]}</h6>
+                                    <Button size="sm"  data-page={info["next_page"]} onClick={search}>Next</Button>
                                 </Col> : <React.Fragment></React.Fragment>
                         }
                     </Row>
                     <hr />
+
                     {
-                        result !== null ?
-                            < Row xs={1} lg={6} className="g-4">
-                                {result.map((item) => (
-                                    <Col>
-                                        <Card>
-                                            <Card.Body>
-                                                <Card.Title>{item["title"]}</Card.Title>
-                                                <Card.Text>
-                                                    {item["year"]}
-                                                    <p> {item["report"]}</p>
-                                                    <Button data-id={item["id"]} onClick={onClickContent}>Check</Button>
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                ))}
-                            </Row> : <Row className='text-center'>"Nothing Found!"</Row>
+                        loading === false ? result !== null ?
+                            <React.Fragment>{result.map((item) => (
+                                <Card className='m-1 shadow-sm'>
+                                    <Card.Body>
+                                        <Card.Title>{item["title"]}</Card.Title>
+                                        <Card.Text>
+                                            <span>{item["year"]}</span><br />
+                                            <span>Reports: {item["report"]}</span>
+                                        </Card.Text>
+                                        <Button size="sm" data-id={item["id"]} onClick={onClickContent}>Check</Button>
+                                    </Card.Body>
+                                </Card>
+                            ))}</React.Fragment>
+                            : <Row className='text-center'><span>"Nothing to show!"</span></Row> : <Row className='d-flex justify-content-center p-5'><Spinner variant='primary' animation="border" role="status"><span className="visually-hidden">Loading...</span></Spinner></Row>
                     }
                 </Col>
             </Row >
+            <Modal show={showDialog} onHide={handleClose} centered size="sm" >
+                <Modal.Header closeButton>
+                    <Modal.Title>Message</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>{message}</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleClose}>
+                        Ok
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </Container >
     )
 }

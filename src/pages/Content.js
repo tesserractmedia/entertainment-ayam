@@ -5,61 +5,78 @@ import NotFound from './NotFound';
 import axios from 'axios'
 
 function Content() {
-    const [loading, setLoading] = React.useState(true);
-    const [content, setContent] = React.useState(false);
-    const [data, setData] = React.useState({});
+    const [content, setContent] = React.useState(null);
+    const [report, setReport] = React.useState(null);
 
     let { id } = useParams();
 
     React.useEffect(() => {
 
         if (id === undefined) {
-            setLoading(false);
-            setContent(false);
+            setContent(null);
 
         } else {
             axios.get(`https://entertainment-ayam.herokuapp.com/api/v1/content/${id}`).then((response) => {
                 if (response.data["success"] === true) {
-                    setLoading(false);
-                    setContent(true);
-                    setData(response.data["data"]);
+                    setContent(response.data["data"]);
                 } else {
-                    setLoading(false);
-                    setContent(false);
+                    setContent(null);
                 }
             });
+
+            axios.get(`https://entertainment-ayam.herokuapp.com/api/v1/report?content_id=${id}`).then((response) => {
+                if (response.data["success"] === true) {
+                    setReport(response.data["data"])
+                } else {
+                    setReport(null);
+                }
+            })
         }
     }, []);
 
     return (
-
-        loading ? <Container className='flex-fill d-flex justify-content-center align-items-center'><Spinner className="m-5" variant="primary" animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-        </Spinner></Container> : content ?
-            <Container className="py-3">
-                <Row className="justify-content-center">
-                    <Col xs sm md lg xl={8}>
-                        <Card>
-                            <Card.Body>
-                                <Card.Title>
-                                    {data["title"]}
-                                </Card.Title>
-                                <Card.Text>
-                                    {data["year"]}
-                                    {data["category"]}
-                                    {data["season"]}
-                                    {data["episode"]}
-                                    {data["report"]}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                </Row>
-                <Row>
-
-                </Row>
-            </Container> : <NotFound />
+        content !== null && report !== null ? <Container className="py-3">
+            <Row className="justify-content-center">
+                <Col xs sm md lg xl={8}>
+                    {content !== null ? <Card>
+                        <Card.Body>
+                            <Card.Title>
+                                {content["title"]}
+                            </Card.Title>
+                            <Card.Text>
+                                {content["year"]}
+                                {content["category"]}
+                                {content["season"]}
+                                {content["episode"]}
+                                {content["report"]}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card> : <Spinner className="m-5" variant="primary" animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                    }
+                    <hr />
+                    <Container>
+                        {
+                            report !== null ?
+                                report.map((item) => {
+                                    return <Card><Card.Body><Card.Title>Report Id {item["id"]}</Card.Title>
+                                        <Card.Text>
+                                            {item["description"]}
+                                        </Card.Text>
+                                    </Card.Body></Card>
+                                })
+                                : <Spinner className="m-5" variant="primary" animation="border" role="status">
+                                    <span className="visually-hidden">Loading...</span>
+                                </Spinner>
+                        }
+                    </Container>
+                </Col>
+            </Row >
+        </Container > : <NotFound />
     )
 }
 
 export default Content
+
+
