@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/entertainment-ayam/static/css/main.63481654.css",
-    "main.js": "/entertainment-ayam/static/js/main.cf03a4d8.js",
+    "main.css": "/entertainment-ayam/static/css/main.ab849312.css",
+    "main.js": "/entertainment-ayam/static/js/main.76425a0b.js",
     "static/js/787.0bae3483.chunk.js": "/entertainment-ayam/static/js/787.0bae3483.chunk.js",
+    "static/media/hk-modular.ttf": "/entertainment-ayam/static/media/hk-modular.61e4cfabb9ed6efb6772.ttf",
     "index.html": "/entertainment-ayam/index.html",
-    "main.63481654.css.map": "/entertainment-ayam/static/css/main.63481654.css.map",
-    "main.cf03a4d8.js.map": "/entertainment-ayam/static/js/main.cf03a4d8.js.map",
+    "main.ab849312.css.map": "/entertainment-ayam/static/css/main.ab849312.css.map",
+    "main.76425a0b.js.map": "/entertainment-ayam/static/js/main.76425a0b.js.map",
     "787.0bae3483.chunk.js.map": "/entertainment-ayam/static/js/787.0bae3483.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.63481654.css",
-    "static/js/main.cf03a4d8.js"
+    "static/css/main.ab849312.css",
+    "static/js/main.76425a0b.js"
   ]
 }
