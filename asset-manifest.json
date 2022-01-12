@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/entertainment-ayam/static/css/main.ab849312.css",
-    "main.js": "/entertainment-ayam/static/js/main.5bf692bc.js",
+    "main.css": "/entertainment-ayam/static/css/main.c5b819de.css",
+    "main.js": "/entertainment-ayam/static/js/main.a856e0ce.js",
     "static/js/787.0bae3483.chunk.js": "/entertainment-ayam/static/js/787.0bae3483.chunk.js",
+    "static/media/akhand-bharat.svg": "/entertainment-ayam/static/media/akhand-bharat.381adda8c88de0295041.svg",
     "static/media/hk-modular.ttf": "/entertainment-ayam/static/media/hk-modular.61e4cfabb9ed6efb6772.ttf",
     "index.html": "/entertainment-ayam/index.html",
-    "main.ab849312.css.map": "/entertainment-ayam/static/css/main.ab849312.css.map",
-    "main.5bf692bc.js.map": "/entertainment-ayam/static/js/main.5bf692bc.js.map",
+    "main.c5b819de.css.map": "/entertainment-ayam/static/css/main.c5b819de.css.map",
+    "main.a856e0ce.js.map": "/entertainment-ayam/static/js/main.a856e0ce.js.map",
     "787.0bae3483.chunk.js.map": "/entertainment-ayam/static/js/787.0bae3483.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ab849312.css",
-    "static/js/main.5bf692bc.js"
+    "static/css/main.c5b819de.css",
+    "static/js/main.a856e0ce.js"
   ]
 }
