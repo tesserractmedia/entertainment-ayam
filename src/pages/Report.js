@@ -100,7 +100,7 @@ function Report() {
                 cancelToken: cancelToken.token
             }).then((response) => {
                 if (response.data["success"] === true && response.data['data'] !== null) {
-                    setContentNameList(result.data['data']);
+                    setContentNameList(response.data['data']);
                 } else {
                     setContentNameList([]);
                 }
