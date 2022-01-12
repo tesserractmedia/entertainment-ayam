@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/entertainment-ayam/static/css/main.ab849312.css",
-    "main.js": "/entertainment-ayam/static/js/main.76425a0b.js",
+    "main.js": "/entertainment-ayam/static/js/main.5bf692bc.js",
     "static/js/787.0bae3483.chunk.js": "/entertainment-ayam/static/js/787.0bae3483.chunk.js",
     "static/media/hk-modular.ttf": "/entertainment-ayam/static/media/hk-modular.61e4cfabb9ed6efb6772.ttf",
     "index.html": "/entertainment-ayam/index.html",
     "main.ab849312.css.map": "/entertainment-ayam/static/css/main.ab849312.css.map",
-    "main.76425a0b.js.map": "/entertainment-ayam/static/js/main.76425a0b.js.map",
+    "main.5bf692bc.js.map": "/entertainment-ayam/static/js/main.5bf692bc.js.map",
     "787.0bae3483.chunk.js.map": "/entertainment-ayam/static/js/787.0bae3483.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ab849312.css",
-    "static/js/main.76425a0b.js"
+    "static/js/main.5bf692bc.js"
   ]
 }
