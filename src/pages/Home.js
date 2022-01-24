@@ -52,10 +52,20 @@ function Home() {
 
   return (
     <Container>
-      <h2 className='text-center my-5'>Title</h2>
+      <Row>
+        <Col>
+        <h2 className='text-center my-3'>Welcome!</h2>
+
+        </Col>
+      </Row>
+      <Row>
+        <Col className='text-center'>
+        This is the Website of Entertainment Ayam a sub-project and part of the Ayam Project ecosystem. This project's aim is to collect data on Hinduphobia being spread through entertainment mediums. No personal details are collected on this website. Here you report Hinduphobia and can also see the data in form of charts and graphs.
+        </Col>
+      </Row>
       <Row>
         <Col lg={8}>
-          This is the Website of Entertainment Ayam a sub-project and part of the Ayam Project ecosystem. This project's aim is to collect data on Hinduphobia being spread through entertainment mediums. No personal details are collected on this website. Here you report Hinduphobia and can also see the data in form of charts and graphs.
+  
         </Col>
         <Col lg={4}>
 

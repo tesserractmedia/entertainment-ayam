@@ -12,11 +12,13 @@ import Search
 import Guide from './pages/Guide';
 import Content from './pages/Content'
 import './bootstrap.min.css';
+import Footer from './components/Footer';
 
 function App() {
   return (
       <div className=" d-flex flex-column min-vh-100">
         <Header className="" />
+        <div className='flex-fill'>
         <Routes>
           <Route path="/content/:id" element={<Content />} />
           <Route path="/content" element={<Content />} />
@@ -26,6 +28,8 @@ function App() {
           <Route path="/guide" element={<Guide />} />
           <Route path="/" element={<Home />} />
         </Routes>
+        </div>
+        <Footer/>
       </div>
   );
 }

@@ -1,27 +1,21 @@
-BASE_URL = "localhost:8000/api/"
-V1 = "v1/"
+const DEBUG = true
+var BASE_URL = "https://entertainment-ayam.herokuapp.com/api"
+
+if(DEBUG){
+    BASE_URL = "http://localhost:8000/api"
+}
+
+const V = (num) => {
+    return `/v${num}`
+}
 
 export const API = {
-    V1: {
-        REPORT: {
-            CREATE: BASE_URL + V1 + `report`,
-            GET: (id = null) => {
-                return BASE_URL + V1 + `report/${id}`
-            },
-            GET_ALL: BASE_URL + V1 + `report`
-        },
-        CONTENT : {
-            GET : (id = null)=>{
-                return BASE_URL + V1 + `content/${id}`;
-            },
-            GET_ALL : BASE_URL + V1 + `content`
-        },
-        BANNED_WORD: (banned_word = null) => {
-            return BASE_URL + V1 + `banned-word/${banned_word}`;
-        }
+    V1 : {
+        report : BASE_URL + V(1) + '/report',
+        content : BASE_URL + V(1) + '/content',
+        category : BASE_URL + V(1) + '/category',
+        banned_word : BASE_URL + V(1) + '/banned-word'
     }
 }
 
 
-
-API.V1.CONTENT.GET()

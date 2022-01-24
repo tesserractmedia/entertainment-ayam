@@ -1,8 +1,9 @@
 import React from 'react'
-import { Card, Container, Spinner, Col, Row } from 'react-bootstrap'
-import { useParams } from 'react-router-dom'
+import { Card, Container, Spinner, Col, Row, Badge } from 'react-bootstrap'
+import { useParams ,Link} from 'react-router-dom'
 import NotFound from './NotFound';
 import axios from 'axios'
+import { Button } from 'react-bootstrap';
 
 function Content() {
     const [content, setContent] = React.useState(null);
@@ -44,12 +45,13 @@ function Content() {
                                 {content["title"]}
                             </Card.Title>
                             <Card.Text>
-                                {content["year"]}
-                                {content["category"]}
-                                {content["season"]}
-                                {content["episode"]}
-                                {content["report"]}
+                               <Badge> {content["year"]}</Badge> &nbsp;
+                               <Badge>   {content["category"]} </Badge> &nbsp;
+                               <Badge>Season  {content["season"]} </Badge> &nbsp;
+                               <Badge>Episode   {content["episode"]} </Badge> &nbsp;
+                               <Badge>No. of Report   {content["report"]} </Badge> &nbsp;
                             </Card.Text>
+                           {/* <Link className='btn btn-primary' to={`/report/${content["id"]}`}>Report</Link>*/}
                         </Card.Body>
                     </Card> : <Spinner className="m-5" variant="primary" animation="border" role="status">
                         <span className="visually-hidden">Loading...</span>

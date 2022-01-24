@@ -14,8 +14,8 @@ export default class Header extends Component {
                             <Link to="/" className='nav-link'>Home</Link>
                             <Link to="/report" className='nav-link'>Report</Link>
                             <Link to="/search" className='nav-link'>Search</Link>
-                            <Link to='/guide' className='nav-link'>Guide</Link>
-                            <Link to="/about" className='nav-link'>About</Link>
+                           {/* <Link to='/guide' className='nav-link'>Guide</Link>
+                            <Link to="/about" className='nav-link'>About</Link>*}
                     
                             {/*<NavDropdown title="Dropdown" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

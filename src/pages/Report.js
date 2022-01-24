@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Button, Card, Col, Row, Spinner, Dropdown, Modal, Container } from 'react-bootstrap'
 import { BsPatchCheck } from 'react-icons/bs'
 import axios from "axios";
-
+import { API } from '../Api'
 function Report() {
 
     const [loading, setLoading] = React.useState(false);
@@ -21,7 +21,7 @@ function Report() {
     const [minute, setMinute] = React.useState(0);
     const [second, setSecond] = React.useState(0);
     const [description, setDescription] = React.useState('');
-    const [contentNameList, setContentNameList] = React.useState([]);
+    const [contentNameList, setContentNameList] = React.useState(null);
 
     var cancelToken;
 
@@ -94,7 +94,7 @@ function Report() {
         cancelToken = axios.CancelToken.source();
 
         axios.get(
-            'https://entertainment-ayam.herokuapp.com/api/v1/content',
+            API.V1.report,
             {
                 params: { name: name },
                 cancelToken: cancelToken.token
@@ -102,7 +102,7 @@ function Report() {
                 if (response.data["success"] === true && response.data['data'] !== null) {
                     setContentNameList(response.data['data']);
                 } else {
-                    setContentNameList([]);
+                    setContentNameList(null);
                 }
             });
         setId(null);
@@ -179,7 +179,7 @@ function Report() {
                                                     onChange={onNameChange}>
                                                 </Dropdown.Toggle>
                                                 {
-                                                    contentNameList.length !== 0 ?
+                                                    contentNameList!== null ?
                                                         <Dropdown.Menu className='w-100 shadow-sm'>
                                                             {
 
@@ -192,7 +192,7 @@ function Report() {
                                                                         data-season={item["season"]}
                                                                         data-episode={item["episode"]}
                                                                         onClick={onNameListItemClick}>
-                                                                        {item["title"]} | {item["category"].toLocaleUpperCase()} {(item["category"] === "movie" || item["category"] === "song") ? "" : (item["season"] !== null ? " | Season " + item["season"].toString() : "") + (item["episode"] ? " | Episode " + item["episode"].toString() : "")}</Dropdown.Item>)
+                                                                        {item["title"]} | {item["category"]} {(item["category"] === "movie" || item["category"] === "song") ? "" : (item["season"] !== null &&  item["season"] === 0? " | Season " + item["season"].toString() : "") + (item["episode"] !== null && item["episode"] !== 0 ? " | Episode " + item["episode"].toString() : "")}</Dropdown.Item>)
                                                                 })
                                                             }
                                                         </Dropdown.Menu> : <Dropdown.Menu className='w-100 text-center'><Dropdown.Item><Spinner variant="primary" animation="border" role="status" /></Dropdown.Item></Dropdown.Menu>

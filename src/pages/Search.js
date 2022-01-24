@@ -12,7 +12,7 @@ function Search() {
     const [category, setCategory] = React.useState("all");
     const [season, setSeason] = React.useState(0);
     const [episode, setEpisode] = React.useState(0);
-    const [sort, setSort] = React.useState('title');
+    const [sort, setSort] = React.useState('');
 
 
     const [showDialog,setShowDialog] = React.useState(false);
@@ -29,7 +29,7 @@ function Search() {
         setCategory("all");
         setSeason(0);
         setEpisode(0);
-        setSort("title");
+        setSort("");
     }
 
     const handleClose = () => {
@@ -51,9 +51,9 @@ function Search() {
     const search = (e) => {
         const params = {};
         const page = e.target.getAttribute("data-page");
-        if (sort !== null) { params["sort"] = sort };
+        if (sort !== "") { params["sort"] = sort };
         if (page !== null) { params["page"] = page }
-        if (title !== "") { params["title"] = title };
+        if (title !== "") { params["name"] = title };
         if (category !== "all") { params["category"] = category };
         if (year !== 0 && year !== "0") { params["year"] = year };
         if (season !== 0) { params["season"] = season };
@@ -166,7 +166,7 @@ function Search() {
                                     <option value="season">Season</option>
                                     <option value="episode">Episode</option>
                                     <option value="report">Report</option>
-                                    <option value={null}>None</option>
+                                    <option value="">None</option>
                                 </Form.Select>
                             </Form.Group>
                         </Row>
@@ -180,7 +180,7 @@ function Search() {
                             info !== null ?
                                 <Col className='d-flex justify-content-between'>
                                     <Button  size="sm" data-page={info["previous_page"]} onClick={search}>Prev</Button>
-                                    <h6> Total Search Result: {info["total_rows"]}</h6>
+                                    <h6> Total Rows On Page: {info["total_rows"]}</h6>
                                     <h6>Page {info["current_page"]} of {info["total_pages"]}</h6>
                                     <Button size="sm"  data-page={info["next_page"]} onClick={search}>Next</Button>
                                 </Col> : <React.Fragment></React.Fragment>
