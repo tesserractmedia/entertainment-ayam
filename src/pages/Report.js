@@ -94,7 +94,7 @@ function Report() {
         cancelToken = axios.CancelToken.source();
 
         axios.get(
-            API.V1.report,
+            'https://entertainment-ayam.herokuapp.com/api/v1/content',
             {
                 params: { name: name },
                 cancelToken: cancelToken.token
