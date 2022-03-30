@@ -7,7 +7,6 @@
 - Most Hinduphobic Content ( Category wise | Year Wise )
 - Reported Category Share
 
-## API Not Deployed Yet
 ---
 
 ## API Version 1
