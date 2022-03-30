@@ -18,7 +18,7 @@
 | <https://entertainment-ayam.herokuapp.com/api/v1/report/:id> | GET |
 | <https://entertainment-ayam.herokuapp.com/api/v1/content> | GET |
 | <https://entertainment-ayam.herokuapp.com/api/v1/content/:id> | GET |
-| <https://entertainment-ayam.herokuapp.com/api/v1/category/> | GET |
+| <https://entertainment-ayam.herokuapp.com/api/v1/category> | GET |
 | <https://entertainment-ayam.herokuapp.com/api/v1/category/:id> | GET |
 | <https://entertainment-ayam.herokuapp.com/api/v1/banned_word> | GET |
 
